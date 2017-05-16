@@ -31,15 +31,15 @@ public class PlatformerCollision : MonoBehaviour
         float sign = Mathf.Sign(velocity.y);
         float rayLength = Mathf.Abs(velocity.y) + skinWidth;
 
+        grounded = false;
         for (int i = 0; i < COLS+1; i++)
         {
-            grounded = false;
+            
             Vector3 position = sign == -1 ? origins.topleft : origins.bottomleft;
             position.x += vspace * i + velocity.x;
 
             Debug.DrawRay(position, Vector2.up * rayLength * sign, Color.red);
             RaycastHit2D hit = Physics2D.Raycast(position, Vector2.up * sign, rayLength, mask);
-
             if (hit)
             {
                 grounded = true;

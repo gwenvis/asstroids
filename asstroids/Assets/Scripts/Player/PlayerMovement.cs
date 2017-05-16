@@ -5,12 +5,12 @@ using UnityEngine;
 [RequireComponent(typeof(PlatformerCollision))]
 public class PlayerMovement : MonoBehaviour
 {
-    public const float MOVEMENT_SPEED = 15.0f;
+    public const float MOVEMENT_SPEED = 25.0f;
     public const float MAX_MOVEMENT_SPEED = 10.0f;
-    public const float DEC_SPEED = 15.0f;
-    public const float GRAVITY = 9.0f;
+    public const float DEC_SPEED = 30.0f;
+    public const float GRAVITY = 20.0f;
     public const float MAX_GRAVITY = 16.0f;
-    public const float JUMP_POWER = 10.0f;
+    public const float JUMP_POWER = 15.0f;
 
     PlatformerCollision plat;
     public Vector2 velocity;
