@@ -12,16 +12,40 @@ public class PlayerMovement : MonoBehaviour
     public const float MAX_GRAVITY = 16.0f;
     public const float JUMP_POWER = 15.0f;
 
+    [SerializeField] AnimationClip idle;
+    [SerializeField] AnimationClip walk;
+
+    Animator anim;
     PlatformerCollision plat;
     public Vector2 velocity;
 
     void Start()
     {
+        anim = GetComponent<Animator>();
         plat = GetComponent<PlatformerCollision>();
     }
 
     public void MoveHorizontal(int dir)
     {
+
+        if(Mathf.Abs(velocity.x) > 0)
+        {
+            anim.SetInteger("walking", 1);
+            anim.speed = Mathf.Abs(velocity.x) / 10;
+
+            var scale = transform.localScale;
+            if (velocity.x < -0.1f)
+                scale.x = -1;
+            else if(velocity.x > 0.1f)
+                scale.x = 1;
+            transform.localScale = scale;
+        }
+        else
+        {
+            anim.SetInteger("walking", 0);
+            anim.speed = 1;
+        }
+
         if(dir == 0)
         {
             velocity.x = Slowdown(velocity.x);

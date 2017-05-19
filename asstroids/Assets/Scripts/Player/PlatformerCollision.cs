@@ -36,7 +36,7 @@ public class PlatformerCollision : MonoBehaviour
         {
             
             Vector3 position = sign == -1 ? origins.topleft : origins.bottomleft;
-            position.x += vspace * i + velocity.x;
+            position.x += hspace * i + velocity.x;
 
             Debug.DrawRay(position, Vector2.up * rayLength * sign, Color.red);
             RaycastHit2D hit = Physics2D.Raycast(position, Vector2.up * sign, rayLength, mask);
@@ -56,7 +56,7 @@ public class PlatformerCollision : MonoBehaviour
         for (int i = 0; i < ROWS+1; i++)
         {
             Vector2 position = sign == 1 ? origins.topright : origins.topleft;
-            position.y += hspace * i;
+            position.y += vspace * i;
 
             Debug.DrawRay(position, Vector2.right * velocity.x, Color.red);
             RaycastHit2D hit = Physics2D.Raycast(position, Vector2.right * sign, rayLength, mask);
@@ -98,6 +98,7 @@ public class PlatformerCollision : MonoBehaviour
         Bounds bounds = boxCollider.bounds;
         bounds.Expand(skinWidth * -2);
         hspace = bounds.size.x / COLS;
+        Debug.Log(hspace);
         vspace = bounds.size.y / ROWS;
     }
 

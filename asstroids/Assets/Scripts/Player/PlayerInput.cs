@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     private PlayerMovement playerMovement;
-    PlatformerCollision plat;
+    private PlatformerCollision plat;
+    private PlayerGrab plag;
+    
 
     public void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         plat = GetComponent<PlatformerCollision>();
+        plag = GetComponent<PlayerGrab>();
     }
 
     public void Update()
@@ -26,6 +29,20 @@ public class PlayerInput : MonoBehaviour
             playerMovement.Jump();
         else
             playerMovement.ApplyGravity();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            // grab or throw
+            if(plag.GrabbedObject)
+                plag.Throw();
+            else
+                plag.Grab();
+        }
+        else if (Input.GetMouseButton(1))
+        {
+            if (plag.GrabbedObject)
+                plag.Drop();
+        }
 
         playerMovement.velocity = plat.Move(playerMovement.velocity * Time.deltaTime) / Time.deltaTime;
     }
