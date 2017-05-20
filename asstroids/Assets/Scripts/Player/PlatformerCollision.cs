@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlatformerCollision : MonoBehaviour
 {
     [SerializeField] private float skinWidth = 0.03f;
+    [SerializeField] private float maxStepHeight = 0.01f;
     [SerializeField] private LayerMask mask;
     private BoxCollider2D boxCollider;
     private RaycastOrigins origins;
@@ -47,13 +48,31 @@ public class PlatformerCollision : MonoBehaviour
             }
         }
      }
+    
+    public void HandleSlope(ref Vector2 velocity, float direction)
+    {
+        Vector3 raycastorigin = direction == 1 ? origins.topright : origins.topleft;
+        raycastorigin.x += velocity.x;
+        raycastorigin.y += maxStepHeight;
+
+        var hit = Physics2D.Raycast(raycastorigin, -Vector3.up, maxStepHeight * 2, mask);
+        if (hit) Debug.Log(hit.normal.x);
+        if (hit && Mathf.Abs(hit.normal.x) > 0.1f )
+        {
+            var pos = transform.position;
+            pos.y += -hit.normal.x * Mathf.Abs(velocity.x) * (velocity.x - hit.normal.x > 0 ? 1 : -1);
+            transform.position = pos;
+        }
+    }
 
     public void HorizontalCollision(ref Vector2 velocity)
     {
         float sign = Mathf.Sign(velocity.x);
         float rayLength = Mathf.Abs(velocity.x) + skinWidth;
 
-        for (int i = 0; i < ROWS+1; i++)
+        HandleSlope(ref velocity, sign);
+
+        for (int i = 0; i < ROWS + 1; i++)
         {
             Vector2 position = sign == 1 ? origins.topright : origins.topleft;
             position.y += vspace * i;
@@ -98,7 +117,6 @@ public class PlatformerCollision : MonoBehaviour
         Bounds bounds = boxCollider.bounds;
         bounds.Expand(skinWidth * -2);
         hspace = bounds.size.x / COLS;
-        Debug.Log(hspace);
         vspace = bounds.size.y / ROWS;
     }
 

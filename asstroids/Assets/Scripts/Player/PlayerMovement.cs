@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public const float MAX_GRAVITY = 16.0f;
     public const float JUMP_POWER = 15.0f;
 
+    [SerializeField] private float maxStepHeight = 0.1f;
+
     [SerializeField] AnimationClip idle;
     [SerializeField] AnimationClip walk;
 
