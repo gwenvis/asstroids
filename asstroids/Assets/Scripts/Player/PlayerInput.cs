@@ -44,6 +44,15 @@ public class PlayerInput : MonoBehaviour
                 plag.Drop();
         }
 
-        playerMovement.velocity = plat.Move(playerMovement.velocity * Time.deltaTime) / Time.deltaTime;
+        var info = plat.Move(playerMovement.velocity * Time.deltaTime);
+        if(!info.climbingSlope)
+        {
+            if (info.bottom || info.top)
+                playerMovement.velocity.y = 0;
+            if (info.left || info.right)
+                playerMovement.velocity.x = 0;
+        }
+        
+        playerMovement.MoveAnimation(info.velocity);
     }
 }

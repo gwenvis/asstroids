@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public const float MAX_MOVEMENT_SPEED = 10.0f;
     public const float DEC_SPEED = 30.0f;
     public const float GRAVITY = 20.0f;
-    public const float MAX_GRAVITY = 16.0f;
+    public const float MAX_GRAVITY = 50.0f;
     public const float JUMP_POWER = 15.0f;
 
     [SerializeField] private float maxStepHeight = 0.1f;
@@ -29,25 +29,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveHorizontal(int dir)
     {
-
-        if(Mathf.Abs(velocity.x) > 0)
-        {
-            anim.SetInteger("walking", 1);
-            anim.speed = Mathf.Abs(velocity.x) / 10;
-
-            var scale = transform.localScale;
-            if (velocity.x < -0.1f)
-                scale.x = -1;
-            else if(velocity.x > 0.1f)
-                scale.x = 1;
-            transform.localScale = scale;
-        }
-        else
-        {
-            anim.SetInteger("walking", 0);
-            anim.speed = 1;
-        }
-
         if(dir == 0)
         {
             velocity.x = Slowdown(velocity.x);
@@ -58,6 +39,27 @@ public class PlayerMovement : MonoBehaviour
         if(Mathf.Abs(velocity.x) > MAX_MOVEMENT_SPEED)
         {
             velocity.x = Mathf.Sign(velocity.x) * MAX_MOVEMENT_SPEED;
+        }
+    }
+
+    public void MoveAnimation(Vector3 velocity)
+    {
+        if (Mathf.Abs(velocity.x) > 0)
+        {
+            anim.SetInteger("walking", 1);
+            anim.speed = Mathf.Abs(velocity.x) * 5;
+
+            var scale = transform.localScale;
+            if (velocity.x < -0.01f)
+                scale.x = -1;
+            else if (velocity.x > 0.01f)
+                scale.x = 1;
+            transform.localScale = scale;
+        }
+        else
+        {
+            anim.SetInteger("walking", 0);
+            anim.speed = 1;
         }
     }
 
