@@ -6,8 +6,8 @@ using UnityEngine;
 public class Water : MonoBehaviour
 {
     const float springconstant = 0.02f;
-    const float damping = 0.04f;
-    const float spread = 0.05f;
+    const float damping = 0.04f;//0.04f;
+    const float spread = 0.05f;//0.05f;
     const float z = -5f;
 
     [SerializeField] private Material lineMat;
@@ -31,6 +31,21 @@ public class Water : MonoBehaviour
     float baseHeight,
         bottom,
         left;
+
+    public Vector3[] Positions
+    {
+        get { return positions; }
+    }
+
+    public float Depth
+    {
+        get { return waterDepth; }
+    }
+
+    public float Width
+    {
+        get { return waterWidth; }
+    }
     
 	void Start ()
     {
@@ -42,6 +57,27 @@ public class Water : MonoBehaviour
         transform.position = wantedpos;
     }
 
+    public bool PointUnderwater(Vector3 point)
+    {
+        if (point.x < transform.position.x ||
+            point.x > transform.position.x + Width ||
+            point.y < transform.position.y + Depth ||
+            point.y > transform.position.y)
+            return false;
+
+        int index = GetClosestPoint(point.x);
+        if (index == -1)
+            return false;
+
+        var pos = transform.TransformPoint(positions[index]);
+        Debug.Log("point y: " + point.y + ". pos: " + pos.y);
+        if (point.y < pos.y)
+            return true;
+
+        
+
+        return false;
+    }
     
     void CreateWater(float left, float width, float bottom, float top)
     {
@@ -184,14 +220,23 @@ public class Water : MonoBehaviour
         {
             velocity = maxSplashVelocity * Mathf.Sign(velocity);
         }
-        
-        if(xpos > positions[0].x + transform.position.x && xpos < positions[positions.Length -1].x + transform.position.x)
+
+        int index = GetClosestPoint(xpos);
+        if (index == -1)
+            return;
+        velocities[index] += velocity;
+    }
+
+    public int GetClosestPoint(float xpos)
+    {
+        if(xpos > positions[0].x + transform.position.x && xpos < positions[positions.Length - 1].x + transform.position.x)
         {
             xpos -= positions[0].x + transform.position.x;
 
-            int index = Mathf.RoundToInt((positions.Length - 1) * (xpos / (positions[positions.Length - 1].x - positions[0].x)));
-            velocities[index] += velocity;
+            return Mathf.RoundToInt((positions.Length - 1) * (xpos / (positions[positions.Length - 1].x - positions[0].x)));
         }
+
+        return -1;
     }
 
     void OnDrawGizmos()

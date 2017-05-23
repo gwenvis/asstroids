@@ -6,6 +6,8 @@ public class FollowTarget : MonoBehaviour
 {
     [SerializeField] Transform target;
     [SerializeField] private bool lerp;
+    [SerializeField] private float lerpTime = 2.0f;
+
     [SerializeField] private bool autoOffset;
     [SerializeField] private Vector3 offset;
 
@@ -21,7 +23,7 @@ public class FollowTarget : MonoBehaviour
     {
         if(lerp)
         {
-
+            transform.position = Vector3.Lerp(transform.position, target.position + offset, lerpTime * Time.deltaTime);
         }
         else
         {

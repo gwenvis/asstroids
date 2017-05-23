@@ -25,7 +25,7 @@ public class PlayerInput : MonoBehaviour
         else
             playerMovement.MoveHorizontal(0);
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && plat.Grounded)
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && (plat.Grounded || playerMovement.InWater))
             playerMovement.Jump();
         else
             playerMovement.ApplyGravity();

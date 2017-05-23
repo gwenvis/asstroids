@@ -8,8 +8,10 @@ public class PlayerMovement : MonoBehaviour
     public const float MOVEMENT_SPEED = 25.0f;
     public const float MAX_MOVEMENT_SPEED = 10.0f;
     public const float DEC_SPEED = 30.0f;
-    public const float GRAVITY = 20.0f;
-    public const float MAX_GRAVITY = 50.0f;
+    public const float GRAVITY = 30.0f;
+    public const float UNDERWATER_GRAVITY = 5.0f;
+    public const float UNDERWATER_MAX_GRAVITY = 5.0f;
+    public const float MAX_GRAVITY = 70.0f;
     public const float JUMP_POWER = 15.0f;
 
     [SerializeField] private float maxStepHeight = 0.1f;
@@ -21,22 +23,27 @@ public class PlayerMovement : MonoBehaviour
     PlatformerCollision plat;
     public Vector2 velocity;
 
+    public bool InWater = false;
+
+    private Water[] waters;
+
     void Start()
     {
         anim = GetComponent<Animator>();
         plat = GetComponent<PlatformerCollision>();
+        FindWaters();
     }
 
     public void MoveHorizontal(int dir)
     {
-        if(dir == 0)
+        if (dir == 0)
         {
             velocity.x = Slowdown(velocity.x);
             return;
         }
 
         velocity.x += dir * MOVEMENT_SPEED * Time.deltaTime;
-        if(Mathf.Abs(velocity.x) > MAX_MOVEMENT_SPEED)
+        if (Mathf.Abs(velocity.x) > MAX_MOVEMENT_SPEED)
         {
             velocity.x = Mathf.Sign(velocity.x) * MAX_MOVEMENT_SPEED;
         }
@@ -68,14 +75,44 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = JUMP_POWER;
     }
 
+    void CheckIfInWater()
+    {
+        InWater = false;
+
+        foreach(var water in waters)
+        {
+            if(water.PointUnderwater(transform.position))
+            {
+                InWater = true;
+                return;
+            }
+        }
+    }
+
     public void ApplyGravity()
     {
+        CheckIfInWater();
+        bool inwater = InWater;
+        var maxgrav = InWater ? UNDERWATER_MAX_GRAVITY : MAX_GRAVITY;
+        var grav = InWater ? UNDERWATER_GRAVITY : GRAVITY;
+
         if (plat.Grounded)
             velocity.y = 0;
 
-        velocity.y -= GRAVITY * Time.deltaTime;
-        if (velocity.y < -MAX_GRAVITY)
-            velocity.y = -MAX_GRAVITY;
+        velocity.y -= grav * Time.deltaTime;
+        if (velocity.y < -maxgrav)
+            velocity.y = -maxgrav;
+    }
+
+    void FindWaters()
+    {
+        var waterObjects = GameObject.FindGameObjectsWithTag("Water");
+        waters = new Water[waterObjects.Length];
+
+        for(int i = 0; i < waters.Length; i++)
+        {
+            waters[i] = waterObjects[i].GetComponent<Water>();
+        }
     }
 
     float Slowdown(float value)

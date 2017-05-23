@@ -18,17 +18,14 @@ public class DetectWaterHit : MonoBehaviour
 
         if(other.tag == "Player")
         {
-            Debug.Log(player.velocity.y);
             water.Splash(transform.position.x, player.velocity.y / 50);
-
             return;
         }
 
         var rigid = other.gameObject.GetComponent<Rigidbody2D>();
         
-        if (rigid)
+        if (rigid && water)
         {
-            Debug.Log(rigid);
             water.Splash(transform.position.x,
                 rigid.velocity.y * rigid.mass / 50);
         }
