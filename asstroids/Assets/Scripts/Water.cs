@@ -70,7 +70,7 @@ public class Water : MonoBehaviour
             return false;
 
         var pos = transform.TransformPoint(positions[index]);
-        Debug.Log("point y: " + point.y + ". pos: " + pos.y);
+
         if (point.y < pos.y)
             return true;
 

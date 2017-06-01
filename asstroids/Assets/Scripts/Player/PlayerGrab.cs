@@ -32,12 +32,17 @@ public class PlayerGrab : MonoBehaviour {
             var rigid = e.GetComponent<Rigidbody2D>();
             rigid.simulated = false;
             e.gameObject.transform.parent = transform;
-            e.gameObject.transform.position = grabTransform.position;
+            var pos = grabTransform.position;
+            pos.z += -1;
+            e.gameObject.transform.position = pos;
             CurrentGrabbed = e.gameObject;
             CurrentRigid = rigid;
             GrabbedObject = true;
             CurrentGrabbed.layer = LayerMask.NameToLayer("Grabbed");
             justGrabbed = true;
+            var egg = e.GetComponent<Egg>();
+            if(egg)
+                e.GetComponent<Egg>().wasGrabbed = true;
         }
     }
 
@@ -57,9 +62,6 @@ public class PlayerGrab : MonoBehaviour {
 
     public void Throw()
     {
-
-        Debug.Log("Throw");
-
         if (GrabbedObject && !justGrabbed)
         {
             var m = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);
@@ -94,29 +96,33 @@ public class PlayerGrab : MonoBehaviour {
     IEnumerator ChangeLayer(GameObject g)
     {
         yield return new WaitForSeconds(1.0f);
-        var gcol = g.GetComponent<Collider2D>();
-        bool touchingPlayer = true;
-
-        while(touchingPlayer)
+        if (g)
         {
-            Collider2D[] cols = new Collider2D[1];
-            gcol.OverlapCollider(new ContactFilter2D(),
-                cols);
+            var gcol = g.GetComponent<Collider2D>();
+            bool touchingPlayer = true;
 
-            Debug.Log(cols.Length);
-
-            touchingPlayer = false;
-            foreach(var c in cols)
+            while (touchingPlayer)
             {
-                if (c == col) {
-                    touchingPlayer = true;
-                    break;
+                Collider2D[] cols = new Collider2D[1];
+                gcol.OverlapCollider(new ContactFilter2D(),
+                    cols);
+
+                Debug.Log(cols.Length);
+
+                touchingPlayer = false;
+                foreach (var c in cols)
+                {
+                    if (c == col)
+                    {
+                        touchingPlayer = true;
+                        break;
+                    }
                 }
+
+                yield return new WaitForEndOfFrame();
             }
 
-            yield return new WaitForEndOfFrame();
+            g.layer = LayerMask.NameToLayer("Grabbable");
         }
-
-        g.layer = LayerMask.NameToLayer("Grabbable");
     }
 }

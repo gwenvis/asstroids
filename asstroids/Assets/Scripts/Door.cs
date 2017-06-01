@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] Player.Button button;
+    [SerializeField] Player.Button[] button;
     [SerializeField] private float moveDistance = 5.0f;
     [SerializeField] private float lerpTime = 5.0f;
     [SerializeField] private bool vertical = false;
@@ -16,8 +16,13 @@ public class Door : MonoBehaviour
     {
         startPosition = transform.position;
 
-        if(button)
-            button.Changed += ButtonStateChanged;
+        if (button.Length == 0)
+            return;
+
+        foreach(var b in button)
+        {
+            b.Changed += ButtonStateChanged;
+        }
     }
 
     void Update()
@@ -35,8 +40,13 @@ public class Door : MonoBehaviour
         transform.position = Vector3.Lerp(transform.position, wantedPos, lerpTime * Time.deltaTime);
     }
 
-    private void ButtonStateChanged(bool pressed)
+    private void ButtonStateChanged(Player.Button sender, bool pressed)
     {
-        open = pressed;
+        bool opendoor = true;
+        foreach(var b in button)
+        {
+            if (!b.Pressed) opendoor = false;
+        }
+        open = opendoor;
     }
 }

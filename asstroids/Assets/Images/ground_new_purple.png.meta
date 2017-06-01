@@ -1,17 +1,19 @@
 fileFormatVersion: 2
-guid: 7295605a25661254e8c4545c7d787e8d
-timeCreated: 1495184677
+guid: 4fc342e96e4fbad4d829db2f74a992f7
+timeCreated: 1495632928
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: ground_new_0
-    21300002: ground_new_1
-    21300004: ground_new_2
-    21300006: ground_new_3
-    21300008: ground_new_4
-    21300010: ground_new_5
-    21300012: ground_new_6
-    21300014: ground_new_7
+    21300000: ground_new_purple_0
+    21300002: ground_new_purple_1
+    21300004: ground_new_purple_2
+    21300006: ground_new_purple_3
+    21300008: ground_new_purple_4
+    21300010: ground_new_purple_5
+    21300012: ground_new_purple_6
+    21300014: ground_new_purple_7
+    21300016: ground_new_purple_8
+    21300018: ground_new_purple_9
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -35,7 +37,7 @@ TextureImporter:
   textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
+    filterMode: 1
     aniso: -1
     mipBias: -1
     wrapMode: 1
@@ -48,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 30
+  spritePixelsToUnits: 25
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -61,7 +63,7 @@ TextureImporter:
   - buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -69,7 +71,7 @@ TextureImporter:
   - buildTarget: Standalone
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -77,7 +79,7 @@ TextureImporter:
   - buildTarget: WebGL
     maxTextureSize: 2048
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 2
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -86,104 +88,130 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ground_new_0
+      name: ground_new_purple_0
       rect:
         serializedVersion: 2
-        x: 68
-        y: 581
-        width: 532
-        height: 100
+        x: 67
+        y: 578
+        width: 279
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_1
+      name: ground_new_purple_1
       rect:
         serializedVersion: 2
-        x: 68
-        y: 398
-        width: 532
-        height: 100
+        x: 703
+        y: 575
+        width: 257
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_2
+      name: ground_new_purple_2
       rect:
         serializedVersion: 2
-        x: 704
-        y: 579
-        width: 514
-        height: 100
+        x: 67
+        y: 396
+        width: 534
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_3
+      name: ground_new_purple_3
       rect:
         serializedVersion: 2
-        x: 704
-        y: 398
-        width: 512
-        height: 100
+        x: 703
+        y: 396
+        width: 517
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_4
+      name: ground_new_purple_4
       rect:
         serializedVersion: 2
-        x: 68
-        y: 215
-        width: 532
-        height: 100
+        x: 67
+        y: 212
+        width: 534
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_5
+      name: ground_new_purple_5
       rect:
         serializedVersion: 2
-        x: 704
-        y: 216
-        width: 512
-        height: 77
+        x: 703
+        y: 213
+        width: 515
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_6
+      name: ground_new_purple_6
       rect:
         serializedVersion: 2
-        x: 704
-        y: 58
-        width: 512
-        height: 100
+        x: 67
+        y: 53
+        width: 534
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: ground_new_7
+      name: ground_new_purple_7
       rect:
         serializedVersion: 2
-        x: 68
-        y: 56
-        width: 532
-        height: 100
+        x: 703
+        y: 55
+        width: 515
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ground_new_purple_8
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 578
+        width: 254
+        height: 111
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: ground_new_purple_9
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 575
+        width: 257
+        height: 111
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

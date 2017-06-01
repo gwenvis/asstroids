@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class FloatInWater : MonoBehaviour {
 
-    const float viscosity = 5f;
+    const float viscosity = 3f;
 
     Water[] waters;
     new Collider2D collider;
@@ -51,8 +51,9 @@ public class FloatInWater : MonoBehaviour {
 
             if (transform.position.y < pos.y)
             {
-                rigidbody.AddForce(Vector2.up * 22, ForceMode2D.Force);
+                rigidbody.AddForce(Vector2.up * 24, ForceMode2D.Force);
                 Vector2 force = rigidbody.velocity * -1 * viscosity;
+                rigidbody.angularVelocity *= 0.98f;
                 rigidbody.AddForce(force, ForceMode2D.Force);
             }
         }
