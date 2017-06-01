@@ -52,7 +52,7 @@ public class PlayerInput : MonoBehaviour
             if (info.left || info.right)
                 playerMovement.velocity.x = 0;
         }
-        
+
         playerMovement.MoveAnimation(info.velocity);
     }
 }

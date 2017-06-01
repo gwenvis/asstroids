@@ -89,11 +89,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c0e34a0b71e36499c979ca1273313f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakEggPrefab: {fileID: 114661412366090146, guid: 0d4b84834278cbb4fa3b12ca73e5cfbc,
-    type: 2}
+  breakEggPrefab: {fileID: 0}
   canBreak: 0
   canBounce: 0
   EggUses: 6
+  eggImpacts:
+  - {fileID: 8300000, guid: 37121de94c1d1244cba0a44ddc3c186a, type: 3}
+  - {fileID: 8300000, guid: 6a8375820e4e5df419c50f7f8306eddd, type: 3}
+  - {fileID: 8300000, guid: 1ee2c91237e0ee54c83d84a7b14361ba, type: 3}
   eggType: 1
   wasGrabbed: 0
 --- !u!212 &212759470269414614

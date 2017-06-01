@@ -24,7 +24,6 @@ public class Parallax : MonoBehaviour
     {
 
         offset += (lastPos - target.position) * moveSpeed / 100;
-        Debug.Log((lastPos - target.position) * moveSpeed / 100);
 
         var wantedpos = target.position + offset + staticOffset;
         wantedpos.z = depth;

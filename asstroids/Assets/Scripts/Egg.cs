@@ -9,7 +9,8 @@ public class Egg : MonoBehaviour
     [SerializeField] private bool canBreak = true;
     [SerializeField] private bool canBounce = false;
     [SerializeField] private int EggUses = 1;
-    
+    [SerializeField] private AudioClip[] eggImpacts;
+    private float minMagniutedForImpact = 5.0f;
 
     [SerializeField] private EggType eggType = EggType.SINK;
 
@@ -23,6 +24,8 @@ public class Egg : MonoBehaviour
 
         if (eggType == EggType.FLOAT)
             gameObject.AddComponent<FloatInWater>();
+        else
+            gameObject.AddComponent<SinkInWater>();
 
         rigidbody = GetComponent<Rigidbody2D>();
 
@@ -44,7 +47,7 @@ public class Egg : MonoBehaviour
     {
         if(wasGrabbed)
         {
-            if(--usesLeft <= 0)
+            if(--usesLeft <= 0 && canBreak)
             {
 
                 if(breakEggPrefab)
@@ -57,6 +60,10 @@ public class Egg : MonoBehaviour
 
             wasGrabbed = false;
         }
+
+        if (rigidbody.velocity.sqrMagnitude > minMagniutedForImpact)
+            AudioSource.PlayClipAtPoint(eggImpacts[Random.Range(0, eggImpacts.Length)],
+                transform.position);
             
     }
     

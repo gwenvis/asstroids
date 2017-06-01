@@ -10,10 +10,11 @@ public class PlayerGrab : MonoBehaviour {
     [SerializeField] private LayerMask grabLayer;
     [SerializeField] private Transform grabTransform;
     
-    private GameObject CurrentGrabbed;
+    public GameObject CurrentGrabbed { get; private set; }
     private Rigidbody2D CurrentRigid;
     private BoxCollider2D col;
     private PlayerMovement plyMovement;
+    private PlayerSound pls;
     private bool justGrabbed = false;
 
     public void Start()
@@ -22,6 +23,7 @@ public class PlayerGrab : MonoBehaviour {
             grabTransform = transform;
         col = GetComponent<BoxCollider2D>();
         plyMovement = GetComponent<PlayerMovement>();
+        pls = GetComponent<PlayerSound>();
     }
 
 	public void Grab()
@@ -41,6 +43,7 @@ public class PlayerGrab : MonoBehaviour {
             CurrentGrabbed.layer = LayerMask.NameToLayer("Grabbed");
             justGrabbed = true;
             var egg = e.GetComponent<Egg>();
+            pls.PlayGrabSound();
             if(egg)
                 e.GetComponent<Egg>().wasGrabbed = true;
         }
@@ -78,6 +81,12 @@ public class PlayerGrab : MonoBehaviour {
         }
     }
     
+    public void DestroyCurrentEgg()
+    {
+        GrabbedObject = false;
+        Destroy(CurrentGrabbed);
+        CurrentGrabbed = null;
+    }
 
     public void Drop()
     {

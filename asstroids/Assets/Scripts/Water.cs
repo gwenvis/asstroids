@@ -21,6 +21,10 @@ public class Water : MonoBehaviour
     [SerializeField] float topOffset = 0;
     [SerializeField] float maxSplashVelocity = 4;
 
+    [Header("Water Sound")]
+    [SerializeField] private AudioClip[] waterSplash;
+    AudioSource audioSource;
+
     Vector3[] positions;
     GameObject[] colliders;
     Mesh[] meshes;
@@ -55,6 +59,8 @@ public class Water : MonoBehaviour
         transform.position = Vector3.zero;
         CreateWater(-xOffset, waterWidth, waterDepth, topOffset);
         transform.position = wantedpos;
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 1.0f;
     }
 
     public bool PointUnderwater(Vector3 point)
@@ -225,6 +231,9 @@ public class Water : MonoBehaviour
         if (index == -1)
             return;
         velocities[index] += velocity;
+        
+        AudioSource.PlayClipAtPoint(waterSplash[Random.Range(0, waterSplash.Length)],
+            new Vector3(xpos, transform.position.y));
     }
 
     public int GetClosestPoint(float xpos)

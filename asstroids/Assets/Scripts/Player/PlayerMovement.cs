@@ -16,14 +16,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float maxStepHeight = 0.1f;
 
-    [SerializeField] AnimationClip idle;
-    [SerializeField] AnimationClip walk;
-
     Animator anim;
     PlatformerCollision plat;
+    PlayerSound pls;
     public Vector2 velocity;
+    Vector2 oldVelocity;
 
     public bool InWater = false;
+    private bool oldGrounded;
 
     private Water[] waters;
 
@@ -31,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         plat = GetComponent<PlatformerCollision>();
+        pls = GetComponent<PlayerSound>();
         FindWaters();
     }
 
@@ -70,9 +71,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if (plat.Grounded || InWater)
+            anim.SetInteger("jump", 0);
+
+        if(plat.Grounded != oldGrounded)
+        {
+            Debug.Log(oldVelocity);
+            if (plat.Grounded && oldVelocity.y < -2f)
+                pls.PlayLandSound();
+        }
+
+        oldGrounded = plat.Grounded;
+        oldVelocity = velocity;
+    }
+
     public void Jump()
     {
         velocity.y = JUMP_POWER;
+        anim.SetInteger("jump", 1);
+        pls.PlayJumpSound();
     }
 
     void CheckIfInWater()

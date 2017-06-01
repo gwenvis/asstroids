@@ -21,6 +21,7 @@ public class Door : MonoBehaviour
 
         foreach(var b in button)
         {
+            if(b)
             b.Changed += ButtonStateChanged;
         }
     }
