@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerSound : MonoBehaviour
 {
     [SerializeField] private AudioClip[] footsteps;
-    [SerializeField] private float footstepsVolume = 1.0f;
+    [SerializeField] private float footstepsVolume = 0.8f;
     [SerializeField] private AudioClip[] throws;
     [SerializeField] private AudioClip[] grab;
     [SerializeField] private AudioClip jump;
@@ -35,7 +35,7 @@ public class PlayerSound : MonoBehaviour
     {
         var x = Internal_GetRandomSoundFromArray(throws);
         if (x != null)
-            audioSource.PlayOneShot(x);
+            audioSource.PlayOneShot(x, 0.6f);
     }
 
     public void PlayGrabSound()
@@ -54,7 +54,11 @@ public class PlayerSound : MonoBehaviour
     public void PlayLandSound()
     {
         if (land)
-            audioSource.PlayOneShot(land);
+        {
+            audioSource.pitch = 1.5f;
+            audioSource.PlayOneShot(land, 0.5f);
+            audioSource.pitch = 1.0f;
+        }
     }
 
     private AudioClip Internal_GetRandomSoundFromArray(AudioClip[] array)

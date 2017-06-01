@@ -75,7 +75,7 @@ public class PlayerGrab : MonoBehaviour {
             CurrentRigid.simulated = true;
             CurrentRigid.velocity = (direction * throwStrength) + plyMovement.velocity;
             CurrentGrabbed.transform.parent = null;
-
+            pls.PlayThrowSound();
             StartCoroutine(ChangeLayer(CurrentGrabbed));
             GrabbedObject = false;
         }

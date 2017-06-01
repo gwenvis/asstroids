@@ -220,6 +220,9 @@ public class Water : MonoBehaviour
         UpdateMeshes();
     }
 
+    private float lastSplashTime;
+    private float minSplashTime = 0.08f;
+
     public void Splash(float xpos, float velocity)
     {
         if(Mathf.Abs(velocity) > maxSplashVelocity)
@@ -227,13 +230,19 @@ public class Water : MonoBehaviour
             velocity = maxSplashVelocity * Mathf.Sign(velocity);
         }
 
+        Debug.Log(velocity);
+
         int index = GetClosestPoint(xpos);
         if (index == -1)
             return;
         velocities[index] += velocity;
-        
-        AudioSource.PlayClipAtPoint(waterSplash[Random.Range(0, waterSplash.Length)],
-            new Vector3(xpos, transform.position.y));
+
+        if (Time.time > lastSplashTime + minSplashTime)
+        {
+            AudioSource.PlayClipAtPoint(waterSplash[Random.Range(0, waterSplash.Length)],
+                new Vector3(xpos, transform.position.y));
+            lastSplashTime = Time.time;
+        }
     }
 
     public int GetClosestPoint(float xpos)
