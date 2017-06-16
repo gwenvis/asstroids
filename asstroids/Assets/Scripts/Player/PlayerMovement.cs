@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public const float MOVEMENT_SPEED = 25.0f;
     public const float MAX_MOVEMENT_SPEED = 10.0f;
+    public const float HEAVY_MAX_MOVEMENT_SPEED = 4.0f;
     public const float DEC_SPEED = 30.0f;
     public const float GRAVITY = 30.0f;
     public const float UNDERWATER_GRAVITY = 5.0f;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     Animator anim;
     PlatformerCollision plat;
+    PlayerGrab plygrab;
     PlayerSound pls;
     public Vector2 velocity;
     Vector2 oldVelocity;
@@ -32,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         plat = GetComponent<PlatformerCollision>();
         pls = GetComponent<PlayerSound>();
+        plygrab = GetComponent<PlayerGrab>();
         FindWaters();
     }
 
@@ -44,7 +47,13 @@ public class PlayerMovement : MonoBehaviour
         }
 
         velocity.x += dir * MOVEMENT_SPEED * Time.deltaTime;
-        if (Mathf.Abs(velocity.x) > MAX_MOVEMENT_SPEED)
+
+        if(plygrab.GrabbedObject && plygrab.CurrentGrabbedEggObject.EType == Egg.EggType.SINK
+            && Mathf.Abs(velocity.x) > HEAVY_MAX_MOVEMENT_SPEED)
+        {
+            velocity.x = Mathf.Sign(velocity.x) * HEAVY_MAX_MOVEMENT_SPEED;
+        }
+        else if (Mathf.Abs(velocity.x) > MAX_MOVEMENT_SPEED)
         {
             velocity.x = Mathf.Sign(velocity.x) * MAX_MOVEMENT_SPEED;
         }
@@ -73,8 +82,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (plat.Grounded || InWater)
+        if (plat.Grounded)
             anim.SetInteger("jump", 0);
+
+        if (InWater)
+            anim.SetInteger("inwater", 1);
+        else
+            anim.SetInteger("inwater", 0);
 
         if(plat.Grounded != oldGrounded)
         {

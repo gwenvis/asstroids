@@ -36,13 +36,17 @@ public class PlayerInput : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
         {
             // grab or throw
             if(plag.GrabbedObject)
-                plag.Throw();
+                plag.PredictTrajectory();
             else
                 plag.Grab();
+        }
+        else if(Input.GetMouseButtonUp(0) && plag.GrabbedObject)
+        {
+            plag.Throw();
         }
         else if (Input.GetMouseButton(1))
         {

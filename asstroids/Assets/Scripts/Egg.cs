@@ -12,17 +12,19 @@ public class Egg : MonoBehaviour
     [SerializeField] private AudioClip[] eggImpacts;
     private float minMagniutedForImpact = 5.0f;
 
-    [SerializeField] private EggType eggType = EggType.SINK;
+    [SerializeField] private EggType _eggType = EggType.SINK;
 
     private int usesLeft;
     public bool wasGrabbed = false;
     new private Rigidbody2D rigidbody;
 
+    public EggType EType { get { return _eggType; } }
+
 	void Start ()
     {
         usesLeft = EggUses + 1;
 
-        if (eggType == EggType.FLOAT)
+        if (_eggType == EggType.FLOAT)
             gameObject.AddComponent<FloatInWater>();
         else
             gameObject.AddComponent<SinkInWater>();
@@ -67,7 +69,7 @@ public class Egg : MonoBehaviour
             
     }
     
-    private enum EggType
+    public enum EggType
     {
         FLOAT,
         SINK

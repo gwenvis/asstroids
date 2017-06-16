@@ -1,0 +1,644 @@
+fileFormatVersion: 2
+guid: b359f0cc547668e45b8efc04e1900b62
+timeCreated: 1497341127
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: player_swimming_0
+    21300002: player_swimming_1
+    21300004: player_swimming_2
+    21300006: player_swimming_3
+    21300008: player_swimming_4
+    21300010: player_swimming_5
+    21300012: player_swimming_6
+    21300014: player_swimming_7
+    21300016: player_swimming_8
+    21300018: player_swimming_9
+    21300020: player_swimming_10
+    21300022: player_swimming_11
+    21300024: player_swimming_12
+    21300026: player_swimming_13
+    21300028: player_swimming_14
+    21300030: player_swimming_15
+    21300032: player_swimming_16
+    21300034: player_swimming_17
+    21300036: player_swimming_18
+    21300038: player_swimming_19
+    21300040: player_swimming_20
+    21300042: player_swimming_21
+    21300044: player_swimming_22
+    21300046: player_swimming_23
+    21300048: player_swimming_24
+    21300050: player_swimming_25
+    21300052: player_swimming_26
+    21300054: player_swimming_27
+    21300056: player_swimming_28
+    21300058: player_swimming_29
+    21300060: player_swimming_30
+    21300062: player_swimming_31
+    21300064: player_swimming_32
+    21300066: player_swimming_33
+    21300068: player_swimming_34
+    21300070: player_swimming_35
+    21300072: player_swimming_36
+    21300074: player_swimming_37
+    21300076: player_swimming_38
+    21300078: player_swimming_39
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 220
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: player_swimming_0
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 4000
+        width: 344
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_1
+      rect:
+        serializedVersion: 2
+        x: 1583
+        y: 4000
+        width: 363
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_2
+      rect:
+        serializedVersion: 2
+        x: 2750
+        y: 4008
+        width: 370
+        height: 517
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_3
+      rect:
+        serializedVersion: 2
+        x: 3919
+        y: 4000
+        width: 384
+        height: 525
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_4
+      rect:
+        serializedVersion: 2
+        x: 5088
+        y: 4001
+        width: 389
+        height: 524
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_5
+      rect:
+        serializedVersion: 2
+        x: 6257
+        y: 3998
+        width: 393
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_6
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 3334
+        width: 405
+        height: 529
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_7
+      rect:
+        serializedVersion: 2
+        x: 1543
+        y: 3333
+        width: 396
+        height: 530
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_8
+      rect:
+        serializedVersion: 2
+        x: 2729
+        y: 3336
+        width: 388
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_9
+      rect:
+        serializedVersion: 2
+        x: 3912
+        y: 3332
+        width: 379
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_10
+      rect:
+        serializedVersion: 2
+        x: 5098
+        y: 3323
+        width: 366
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_11
+      rect:
+        serializedVersion: 2
+        x: 6284
+        y: 3323
+        width: 355
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_12
+      rect:
+        serializedVersion: 2
+        x: 409
+        y: 2660
+        width: 341
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_13
+      rect:
+        serializedVersion: 2
+        x: 1595
+        y: 2657
+        width: 337
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_14
+      rect:
+        serializedVersion: 2
+        x: 2771
+        y: 2657
+        width: 327
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_15
+      rect:
+        serializedVersion: 2
+        x: 3943
+        y: 2660
+        width: 338
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_16
+      rect:
+        serializedVersion: 2
+        x: 5116
+        y: 2670
+        width: 348
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_17
+      rect:
+        serializedVersion: 2
+        x: 6276
+        y: 2670
+        width: 367
+        height: 531
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_18
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1999
+        width: 383
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_19
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 1998
+        width: 398
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_20
+      rect:
+        serializedVersion: 2
+        x: 2709
+        y: 1995
+        width: 413
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_21
+      rect:
+        serializedVersion: 2
+        x: 3874
+        y: 1995
+        width: 424
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_22
+      rect:
+        serializedVersion: 2
+        x: 5040
+        y: 1995
+        width: 437
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_23
+      rect:
+        serializedVersion: 2
+        x: 6202
+        y: 1995
+        width: 451
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_24
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 1333
+        width: 450
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_25
+      rect:
+        serializedVersion: 2
+        x: 1512
+        y: 1333
+        width: 434
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_26
+      rect:
+        serializedVersion: 2
+        x: 2699
+        y: 1333
+        width: 423
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_27
+      rect:
+        serializedVersion: 2
+        x: 3890
+        y: 1333
+        width: 413
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_28
+      rect:
+        serializedVersion: 2
+        x: 5076
+        y: 1337
+        width: 401
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_29
+      rect:
+        serializedVersion: 2
+        x: 6271
+        y: 1337
+        width: 378
+        height: 540
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_30
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 688
+        width: 361
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_31
+      rect:
+        serializedVersion: 2
+        x: 1584
+        y: 676
+        width: 345
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_32
+      rect:
+        serializedVersion: 2
+        x: 2767
+        y: 671
+        width: 334
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_33
+      rect:
+        serializedVersion: 2
+        x: 3958
+        y: 671
+        width: 319
+        height: 544
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_34
+      rect:
+        serializedVersion: 2
+        x: 5131
+        y: 674
+        width: 326
+        height: 541
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_35
+      rect:
+        serializedVersion: 2
+        x: 6312
+        y: 676
+        width: 326
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_36
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 14
+        width: 336
+        height: 539
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_37
+      rect:
+        serializedVersion: 2
+        x: 1598
+        y: 26
+        width: 342
+        height: 527
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_38
+      rect:
+        serializedVersion: 2
+        x: 2771
+        y: 27
+        width: 348
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player_swimming_39
+      rect:
+        serializedVersion: 2
+        x: 3944
+        y: 27
+        width: 351
+        height: 526
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
