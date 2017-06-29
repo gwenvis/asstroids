@@ -14,6 +14,8 @@ public class PlatformerCollision : MonoBehaviour
     private CollisionInfo collisionInfo;
     private float hspace, vspace;
 
+    public BoxCollider2D BoxCollider { get { return boxCollider; } }
+
     public bool Grounded
     {
         get { return collisionInfo.bottom; }

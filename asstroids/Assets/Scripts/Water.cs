@@ -230,8 +230,6 @@ public class Water : MonoBehaviour
             velocity = maxSplashVelocity * Mathf.Sign(velocity);
         }
 
-        Debug.Log(velocity);
-
         int index = GetClosestPoint(xpos);
         if (index == -1)
             return;

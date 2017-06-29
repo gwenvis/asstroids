@@ -39,7 +39,8 @@ public class PlayerGrab : MonoBehaviour {
 
 	public void Grab()
     {
-        var e = CheckCollisionOnMouse();
+        var e = CheckNearbyCollision();
+
         if (e)
         {
             var rigid = e.GetComponent<Rigidbody2D>();
@@ -61,14 +62,9 @@ public class PlayerGrab : MonoBehaviour {
         }
     }
 
-    public Collider2D CheckCollisionOnMouse()
+    public Collider2D CheckNearbyCollision()
     {
-        
-        var mousepos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z);
-        var point = Camera.main.ScreenToWorldPoint(mousepos);
-        var direction = (point - transform.position).normalized;
-
-        var hit = Physics2D.Raycast(transform.position, direction, maxdistance, grabLayer);
+        var hit = Physics2D.CircleCast(transform.position, maxdistance, Vector2.zero, maxdistance, grabLayer);
         return hit.collider;
     }
 

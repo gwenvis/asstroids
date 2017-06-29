@@ -16,16 +16,22 @@ public class PlayerMovement : MonoBehaviour
     public const float JUMP_POWER = 15.0f;
 
     [SerializeField] private float maxStepHeight = 0.1f;
+    [SerializeField] private ParticleSystem walkParticle;
+    [SerializeField] private ParticleSystem landParticle;
+    [SerializeField] private Transform walkParticlePosition;
 
     Animator anim;
     PlatformerCollision plat;
     PlayerGrab plygrab;
     PlayerSound pls;
-    public Vector2 velocity;
     Vector2 oldVelocity;
 
+    public Vector2 velocity;
     public bool InWater = false;
     private bool oldGrounded;
+
+    public bool OnLadder { get; private set; }
+    private Ladder onLadderObject;
 
     private Water[] waters;
 
@@ -40,7 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveHorizontal(int dir)
     {
-        if (dir == 0)
+        if(OnLadder)
+        {
+            velocity.x = 0;
+            return;
+        }
+        else if (dir == 0)
         {
             velocity.x = Slowdown(velocity.x);
             return;
@@ -56,6 +67,14 @@ public class PlayerMovement : MonoBehaviour
         else if (Mathf.Abs(velocity.x) > MAX_MOVEMENT_SPEED)
         {
             velocity.x = Mathf.Sign(velocity.x) * MAX_MOVEMENT_SPEED;
+        }
+    }
+
+    public void FireWalkParticle()
+    {
+        if (walkParticle)
+        {
+            Destroy(Instantiate(walkParticle, walkParticlePosition.position, walkParticlePosition.rotation), 2f);
         }
     }
 
@@ -92,13 +111,32 @@ public class PlayerMovement : MonoBehaviour
 
         if(plat.Grounded != oldGrounded)
         {
-            Debug.Log(oldVelocity);
             if (plat.Grounded && oldVelocity.y < -2f)
+            {
                 pls.PlayLandSound();
+                var p = Instantiate(landParticle, walkParticlePosition.position, Quaternion.identity);
+            }
         }
 
         oldGrounded = plat.Grounded;
         oldVelocity = velocity;
+            
+        var cols = Physics2D.BoxCastAll(transform.position, new Vector2(1, 1), 0, Vector2.zero);
+        foreach (var col in cols)
+        {
+            
+            if (col.transform.tag == "Ladder" &&
+                !OnLadder && (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.W)))
+            {
+                //Get on the ladder
+                onLadderObject = col.transform.GetComponent<Ladder>();
+                OnLadder = true;
+
+                var pos = transform.position;
+                pos.x = onLadderObject.transform.position.x + (transform.localScale.x < 0 ? Ladder.LADDER_WIDTH : 0);
+                transform.position = pos;
+            }
+        }
     }
 
     public void Jump()
@@ -106,6 +144,12 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = JUMP_POWER;
         anim.SetInteger("jump", 1);
         pls.PlayJumpSound();
+
+        if(OnLadder)
+        {
+            OnLadder = false;
+            onLadderObject = null;
+        }
     }
 
     void CheckIfInWater()
@@ -124,6 +168,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void ApplyGravity()
     {
+        if (OnLadder)
+        {
+            LadderMovement();
+            return;
+        }
+
         CheckIfInWater();
         bool inwater = InWater;
         var maxgrav = InWater ? UNDERWATER_MAX_GRAVITY : MAX_GRAVITY;
@@ -135,6 +185,33 @@ public class PlayerMovement : MonoBehaviour
         velocity.y -= grav * Time.deltaTime;
         if (velocity.y < -maxgrav)
             velocity.y = -maxgrav;
+    }
+
+    void LadderMovement()
+    {
+        if(Input.GetKey(KeyCode.W))
+        {
+            velocity.y = MAX_MOVEMENT_SPEED;
+            Debug.Log(plat.BoxCollider.bounds.min.y);
+            if (plat.BoxCollider.bounds.min.y > onLadderObject.transform.position.y + onLadderObject.Height)
+                ExitLadder();
+        }
+        else if(Input.GetKey(KeyCode.S))
+        {
+            velocity.y = -MAX_MOVEMENT_SPEED;
+            if (plat.BoxCollider.bounds.min.y < onLadderObject.transform.position.y)
+                ExitLadder();
+        }
+        else
+        {
+            velocity.y = 0;
+        }
+    }
+
+    void ExitLadder()
+    {
+        OnLadder = false;
+        onLadderObject = null;
     }
 
     void FindWaters()

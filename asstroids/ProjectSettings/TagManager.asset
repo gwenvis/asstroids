@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Water
+  - Ladder
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Grabbed
   - Grabbable
   - IgnorePlayer
-  - 
+  - Ladder
   - 
   - 
   - 
