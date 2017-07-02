@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(PlatformerCollision))]
 public class PlayerMovement : MonoBehaviour
 {
-    public const float MOVEMENT_SPEED = 25.0f;
+    public const float MOVEMENT_SPEED = 18.0f;
     public const float MAX_MOVEMENT_SPEED = 10.0f;
     public const float HEAVY_MAX_MOVEMENT_SPEED = 4.0f;
     public const float HOLDING_MAX_MOVEMENT_SPEED = 5.5f;
@@ -14,11 +14,11 @@ public class PlayerMovement : MonoBehaviour
     public const float UNDERWATER_GRAVITY = 5.0f;
     public const float UNDERWATER_MAX_GRAVITY = 5.0f;
     public const float MAX_GRAVITY = 70.0f;
-    public const float JUMP_POWER = 15.0f;
-    public const float JETPACK_MAX_SPEED = 3.0f;
-    public const float JETPACK_ACCELERATION = 15.0f;
-    public const float FUEL_USAGE_RATE = 25f;
-    public const float FUEL_RECHARGE_RATE = 25f;
+    public const float JUMP_POWER = 12.0f;
+    public const float JETPACK_MAX_SPEED = 20.0f;
+    public const float JETPACK_ACCELERATION = 20.0f;
+    public const float FUEL_USAGE_RATE = 34f;
+    public const float FUEL_RECHARGE_RATE = 50f;
 
     [SerializeField] private float maxStepHeight = 0.1f;
     [SerializeField] private ParticleSystem walkParticle;
