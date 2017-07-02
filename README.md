@@ -6,7 +6,9 @@ SchoolAssignment for Media Colege Amsterdam
 
 Made By: Amy Vartagnian, Antonio Bottelier, Bora Oksal, Myrthe Lucas, Thomas Dekker
 
-Controlls: A: Move Left
+Controlls: 
+
+           A: Move Left
 
            D: Move Right
            
