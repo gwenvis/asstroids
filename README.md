@@ -1,3 +1,6 @@
-# asstroids
+#ExpandingSpace
 
-2d Unity Platformer in 3 weken somehow about space n stuff
+2D Platformer in Unity
+SchoolAssignment for Media Colege Amsterdam
+Made By: Amy Vartagnian, Antonio Bottelier, Bora Oksal, Myrthe Lucas, Thomas Dekker
+Play the game: N/A
