@@ -36,7 +36,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1125570928346044}
   m_LocalRotation: {x: -0.21486042, y: -0.21486042, z: -0.6736728, w: 0.6736728}
-  m_LocalPosition: {x: -3.7747507, y: 5.4270563, z: 0}
+  m_LocalPosition: {x: 31.062815, y: 2.0969124, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2141,10 +2141,10 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
-    collisionMode: 0
+    type: 1
+    collisionMode: 1
     plane0: {fileID: 0}
     plane1: {fileID: 0}
     plane2: {fileID: 0}

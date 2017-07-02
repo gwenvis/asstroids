@@ -22,14 +22,25 @@ public class DestroyEggs : MonoBehaviour
         {
             foreach(var egg in EggsToDestroy)
             {
-                Destroy(egg);
+                if (!egg)
+                    continue;
+                var x = egg.GetComponent<Egg>();
+                x.DestroyEgg();
             }
+
+            return;
         }
 
         foreach(var egg in EggsToDestroy)
         {
             if (col.gameObject == egg)
-                Destroy(egg);
+            {
+                var x = egg.GetComponent<Egg>();
+                if (x)
+                    x.DestroyEgg();
+                else
+                    Destroy(x);
+            }
 
             //Also check the egg the player is holding.
             if (p.GrabbedObject && p.CurrentGrabbed == egg)

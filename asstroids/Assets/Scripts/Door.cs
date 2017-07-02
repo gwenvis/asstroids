@@ -9,8 +9,15 @@ public class Door : MonoBehaviour
     [SerializeField] private float lerpTime = 5.0f;
     [SerializeField] private bool vertical = false;
     [SerializeField] private bool inverted = false;
+    [SerializeField] private AudioClip doorOpenClip;
+    [SerializeField] private AudioClip doorCloseClip;
     private Vector3 startPosition;
+    private Animator animator;
+    private BoxCollider2D boxCollider;
     private bool open;
+    private bool oldState;
+
+    private AudioSource audioSource;
 
     void Start()
     {
@@ -24,21 +31,43 @@ public class Door : MonoBehaviour
             if(b)
             b.Changed += ButtonStateChanged;
         }
+
+        animator = GetComponentInChildren<Animator>();
+        boxCollider = GetComponentInChildren<BoxCollider2D>();
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.spatialBlend = 1;
+        audioSource.loop = false;
+
+        oldState = open;
     }
 
     void Update()
     {
         var wantedPos = startPosition;
         
-        if(open)
+        boxCollider.enabled = !open;
+        
+        animator.SetBool("open", open);
+
+        if(oldState != open)
         {
-            if (vertical)
-                wantedPos.y += inverted ? -moveDistance : moveDistance;
+            if(open)
+            {
+                audioSource.Stop();
+                audioSource.clip = doorOpenClip;
+                audioSource.Play();
+            }
             else
-                wantedPos.x += inverted ? -moveDistance : moveDistance;
+            {
+                audioSource.Stop();
+                audioSource.clip = doorCloseClip;
+                audioSource.Play();
+            }
         }
 
         transform.position = Vector3.Lerp(transform.position, wantedPos, lerpTime * Time.deltaTime);
+
+        oldState = open;
     }
 
     private void ButtonStateChanged(Player.Button sender, bool pressed)

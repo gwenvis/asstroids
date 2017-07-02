@@ -10,13 +10,15 @@ public class Egg : MonoBehaviour
     [SerializeField] private bool canBounce = false;
     [SerializeField] private int EggUses = 1;
     [SerializeField] private AudioClip[] eggImpacts;
-    private float minMagniutedForImpact = 5.0f;
+    private float minMagniutedForImpact = 1.0f;
+    private bool destroying = false;
 
     [SerializeField] private EggType _eggType = EggType.SINK;
 
     private int usesLeft;
     public bool wasGrabbed = false;
     new private Rigidbody2D rigidbody;
+    SpriteRenderer spriteRenderer;
 
     public EggType EType { get { return _eggType; } }
 
@@ -30,6 +32,7 @@ public class Egg : MonoBehaviour
             gameObject.AddComponent<SinkInWater>();
 
         rigidbody = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         if(canBounce)
         {
@@ -42,8 +45,37 @@ public class Egg : MonoBehaviour
 	
 	void Update ()
     {
-		
+        if (destroying)
+        {
+            float rotateSpeed = 80;
+            float moveSpeed = 3;
+            float scaleSpeed = 1f;
+            float colorSpeed = 2f;
+
+            var rot = transform.eulerAngles;
+            rot.z += rotateSpeed * Time.deltaTime;
+            transform.eulerAngles = rot;
+
+            transform.Translate(0, moveSpeed * Time.deltaTime, 0, Space.World);
+            var scale = transform.localScale;
+            scale.x -= scaleSpeed * Time.deltaTime;
+            scale.y -= scaleSpeed * Time.deltaTime;
+            spriteRenderer.color = new Color(1, 1, 1, spriteRenderer.color.a - colorSpeed * Time.deltaTime);
+            if (spriteRenderer.color.a <= 0)
+                Destroy(gameObject);
+            transform.localScale = scale;
+        }
 	}
+
+    public void DestroyEgg()
+    {
+        if (destroying)
+            return;
+
+        rigidbody.simulated = false;
+        gameObject.GetComponent<Collider2D>().enabled = false ;
+        destroying = true;
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -63,7 +95,7 @@ public class Egg : MonoBehaviour
             wasGrabbed = false;
         }
 
-        if (rigidbody.velocity.sqrMagnitude > minMagniutedForImpact)
+        if (rigidbody.velocity.magnitude > minMagniutedForImpact)
             AudioSource.PlayClipAtPoint(eggImpacts[Random.Range(0, eggImpacts.Length)],
                 transform.position);
             

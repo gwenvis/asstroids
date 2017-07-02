@@ -56,6 +56,7 @@ public class Water : MonoBehaviour
         if (!Application.isPlaying)
             return;
         var wantedpos = transform.position;
+        wantedpos.z = -5;
         transform.position = Vector3.zero;
         CreateWater(-xOffset, waterWidth, waterDepth, topOffset);
         transform.position = wantedpos;

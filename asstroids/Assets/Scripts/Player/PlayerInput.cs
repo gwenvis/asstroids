@@ -26,10 +26,10 @@ public class PlayerInput : MonoBehaviour
         else
             playerMovement.MoveHorizontal(0);
 
-        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) && (plat.Grounded || playerMovement.InWater || playerMovement.OnLadder))
+
+        playerMovement.ApplyGravity();
+        if (Input.GetKey(KeyCode.Space))
             playerMovement.Jump();
-        else
-            playerMovement.ApplyGravity();
 
         if(Input.GetKeyDown(KeyCode.R))
         {
@@ -39,9 +39,9 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             // grab or throw
-            if(plag.GrabbedObject)
+            if(plag.GrabbedObject && !playerMovement.OnLadder)
                 plag.PredictTrajectory();
-            else
+            else if(!playerMovement.OnLadder)
                 plag.Grab();
         }
         else if(Input.GetMouseButtonUp(0) && plag.GrabbedObject)

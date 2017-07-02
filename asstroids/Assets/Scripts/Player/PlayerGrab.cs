@@ -158,7 +158,7 @@ public class PlayerGrab : MonoBehaviour {
     public void DestroyCurrentEgg()
     {
         GrabbedObject = false;
-        Destroy(CurrentGrabbed);
+        CurrentGrabbedEggObject.DestroyEgg();
         CurrentGrabbed = null;
     }
 
