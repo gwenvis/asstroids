@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     public const float UNDERWATER_GRAVITY = 5.0f;
     public const float UNDERWATER_MAX_GRAVITY = 5.0f;
     public const float MAX_GRAVITY = 70.0f;
-    public const float JUMP_POWER = 12.0f;
+    public const float JUMP_POWER = 13.0f;
     public const float JETPACK_MAX_SPEED = 20.0f;
     public const float JETPACK_ACCELERATION = 20.0f;
     public const float FUEL_USAGE_RATE = 34f;
@@ -26,6 +26,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem jetpackParticle;
     [SerializeField] private Transform walkParticlePosition;
     private float fuel = 100;
+    private bool canfly = false;
+    private float flytimer;
 
     Animator anim;
     PlatformerCollision plat;
@@ -127,9 +129,13 @@ public class PlayerMovement : MonoBehaviour
                     fuel = 100;
                 }
             }
+            flytimer = Time.time;
         }
         else
+        {
             pls.PauseJetpackRefillingSound();
+            canfly = Time.time > flytimer + 0.2f;
+        }
 
         if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -194,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
             if (OnLadder)
                 ExitLadder();
         }
-        else if(fuel > 0 && velocity.y < JETPACK_MAX_SPEED + 1)
+        else if(fuel > 0 && velocity.y < JETPACK_MAX_SPEED && canfly)
         {
             fuel -= FUEL_USAGE_RATE * Time.deltaTime;
             pls.PlayJetpackUsingSound();
@@ -258,7 +264,6 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = MAX_MOVEMENT_SPEED;
             anim.speed = 1;
-            Debug.Log(plat.BoxCollider.bounds.min.y);
             if (plat.BoxCollider.bounds.min.y > onLadderObject.transform.position.y + onLadderObject.Height)
                 ExitLadder();
         }
@@ -302,10 +307,5 @@ public class PlayerMovement : MonoBehaviour
         if (abs < 0)
             abs = 0;
         return abs * sign;
-    }
-
-    void OnGUI()
-    {
-        GUI.Label(new Rect(0, 0, 100, 100), fuel.ToString());
     }
 }
