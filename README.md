@@ -27,6 +27,10 @@ Controls:
            Space: Jump/Jetpack
            LeftMouse: Pickup/Throw object
            Rightmouse: Drop Object
+           
+## Play the game via browser
+
+http://20190.hosts.ma-cloud.nl/bewijzenmap/bewijzenmap/P1.4/ExpandingSpace/
 
 ## Download the game
 ___
