@@ -39,7 +39,7 @@ public class MainMenuController : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         if (start)
-            UnityEngine.SceneManagement.SceneManager.LoadScene("scene1");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         else
             Application.Quit();
     }

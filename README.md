@@ -1,23 +1,36 @@
-#ExpandingSpace
+# ExpandingSpace
 
-2D Platformer in Unity
+## Space Omelette 
+___
 
-SchoolAssignment for Media Colege Amsterdam
+Space Omelette is a puzzle platformer made in Unity 3D,  
+for the Expanding Space project we had to make for Mediacollege.  
 
-Made By: Amy Vartagnian, Antonio Bottelier, Bora Oksal, Myrthe Lucas, Thomas Dekker
+The game is powered by Unity 3D.
 
-Controlls: 
+![](http://stepperman.me/gamescreenshot.png)
+
+Developers:
+ * Antonio Bottelier;
+ * Bora Oksal
+
+Artists:
+ * Amy Vartagnian; 
+ * Myrthe Lucas; 
+ * Thomas Dekker
+
+Controls: 
 
            A: Move Left
-
            D: Move Right
-           
            W: Climb Up
-           
            Space: Jump/Jetpack
-           
            LeftMouse: Pickup/Throw object
-           
            Rightmouse: Drop Object
 
-Play the game: N/A
+## Download the game
+___
+
+[![Download](http://www.stepperman.me/download.png)](http://www.stepperman.me/spaceomelette.rar)
+
+[0]:www.stepperman.me/download.png

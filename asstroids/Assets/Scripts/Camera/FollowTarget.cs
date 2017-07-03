@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FollowTarget : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    public Transform target;
     [SerializeField] private bool lerp;
     [SerializeField] private float lerpTime = 2.0f;
 
