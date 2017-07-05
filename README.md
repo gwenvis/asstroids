@@ -32,6 +32,10 @@ Controls:
 
 http://20190.hosts.ma-cloud.nl/bewijzenmap/bewijzenmap/P1.4/ExpandingSpace/
 
+## Link to game documentation
+
+https://docs.google.com/document/d/1WbExr38wepB4rt0mmDcsMO4MeIGhS7uGG0k16C7EwEI/edit?usp=sharing
+
 ## Download the game
 ___
 
