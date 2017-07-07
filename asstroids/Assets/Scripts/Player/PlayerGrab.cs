@@ -65,7 +65,17 @@ public class PlayerGrab : MonoBehaviour {
     public Collider2D CheckNearbyCollision()
     {
         var hit = Physics2D.CircleCast(transform.position, maxdistance, Vector2.zero, maxdistance, grabLayer);
-        return hit.collider;
+        if(hit)
+        {
+            var direction = (hit.point - new Vector2(transform.position.x, transform.position.y)).normalized;
+            hit = Physics2D.Raycast(transform.position, direction, Mathf.Infinity, predictionLayer);
+            if(hit)
+            {
+                if (grabLayer == (grabLayer | (1 << hit.collider.gameObject.layer)))
+                    return hit.collider;
+            }
+        }
+        return null;
     }
 
     void LateUpdate()
